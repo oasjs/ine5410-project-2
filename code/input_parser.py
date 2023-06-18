@@ -7,12 +7,15 @@ class InputParser:
     def __init__(self):
         self.__board: Board = Board()
 
-    def row_major(self):
+    def remove_line_breaks(self, board_set: list[str]) -> list[str]:
+        
         pass
 
-    def col_major(self):
+    def row_parser(self) -> list[str]:
         pass
 
-    def region_major(self):
+    def col_parser(self):
         pass
 
+    def region_parser(self):
+        pass
