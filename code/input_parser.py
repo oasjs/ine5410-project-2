@@ -29,4 +29,15 @@ class InputParser:
             column = ""
 
     def region_parser(self):
+        tabuleiro_region_major = []
+        region = ""
+        tabuleiro_row_major = self.remove_line_breaks(["534678912\n", "672195348\n", "198342567\n", "859761423\n", "426853791\n", "713924856\n", "961537284\n", "287419635\n", "345286179\n"])
+        for i in range(0, 9, 3):
+            for j in range(0, 9, 3):
+                for k in range(3):
+                    for l in range(3):
+                        region += tabuleiro_row_major[i+k][j+l]
+                print(region)
+                tabuleiro_region_major.append(region)
+                region = ""
         pass
