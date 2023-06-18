@@ -16,3 +16,5 @@ class InputParser:
     def region_major(self):
         pass
 
+    def create_board(self) -> Board:
+        pass
