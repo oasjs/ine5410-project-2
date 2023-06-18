@@ -10,11 +10,11 @@ class InputParser:
     def row_major(self):
         pass
 
-    def col_major(self):
+    def row_parser(self) -> list[str]:
         pass
 
-    def region_major(self):
+    def col_parser(self):
         pass
 
-    def create_board(self) -> Board:
+    def region_parser(self):
         pass
