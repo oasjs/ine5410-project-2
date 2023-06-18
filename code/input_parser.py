@@ -41,3 +41,19 @@ class InputParser:
                 tabuleiro_region_major.append(region)
                 region = ""
         pass
+
+# Teste de execução do método remove_line_breaks
+print('\nTeste de execução do método remove_line_breaks')
+InputParser().remove_line_breaks(["123\n", "456\n", "789\n"])
+
+# Teste de execução do método parse_row
+print('\nTeste de execução do método parse_row')
+InputParser().row_parser()
+
+# Teste de execução do método parse_col
+print('\nTeste de execução do método parse_col')
+InputParser().col_parser()
+
+# Teste de execução do método parse_region
+print('\nTeste de execução do método parse_region')
+InputParser().region_parser()
