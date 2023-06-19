@@ -2,4 +2,7 @@
 
 
 class Board:
-    pass
+    def __init__(self):
+        self.row_major    = list()
+        self.col_major    = list()
+        self.region_major = list()
