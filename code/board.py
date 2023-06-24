@@ -2,7 +2,6 @@
 
 
 class Board:
-    def __init__(self):
-        self.row_major    = list()
-        self.col_major    = list()
-        self.region_major = list()
+    def __init__(self, id: int, rows: list[str]) -> None:
+        self.id = id
+        self.rows = rows
