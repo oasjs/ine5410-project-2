@@ -16,7 +16,7 @@ class InputParser:
 
     def remove_line_breaks(self, board_set: list[str]) -> list[str]:
         for i in range(len(board_set)):
-            board_set[i] = board_set[i].replace("\n", "")
+            board_set[i] = board_set[i][:8]
         return board_set
 
     def row_parser(self, board_set) -> list[str]:
@@ -46,3 +46,5 @@ class InputParser:
                 region = ""
         return tabuleiro_region_major
 
+
+# Teste
