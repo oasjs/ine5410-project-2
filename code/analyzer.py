@@ -12,29 +12,30 @@ class Analyzer:
 
         # Verifica erros nas linhas
         for i in range(9):
-            c = self.check(board.row_major[i])
-            for e in c:
-                errors.append(f"L{e}")
+            e = self.check(board.row_major[i])
+            if e:
+                errors.append(f"L{i+1}")
 
         # Verifica erros nas colunas
         for i in range(9):
-            c = self.check(board.col_major[i])
-            for e in c:
-                errors.append(f"C{e}")
+            e = self.check(board.col_major[i])
+            if e:
+                errors.append(f"C{i+1}")
 
         # Verifica erros nas regiões
         for i in range(9):
-            c = self.check(board.region_major[i])
-            for e in c:
-                errors.append(f"R{e}")
+            e = self.check(board.region_major[i])
+            if e:
+                errors.append(f"R{i+1}")
         
         return errors
            
     def check(self, board : str):
-        errors = list()
-        # Verificar os caracteres repetidos e guarda a posição do erro
-        for i in range(9):
-            for j in range(i+1, 9):
-                if board[i] == board[j]:
-                    errors.append(j+1)
+        errors = 0
+        # Verificar o número de caracteres repetidos
+        for c in board:
+           count = board.count(c)
+           if count > 1:
+               errors += count - 1
         return errors
+    
