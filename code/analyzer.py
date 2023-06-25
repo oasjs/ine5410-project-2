@@ -67,14 +67,12 @@ class Analyzer:
     
     # Analiza uma string e retorna o número de erros
     def __analyze(self, board : str) -> int:
-        errors = 0
         # Verifica o número de caracteres repetidos
         for c in board:
            count = board.count(c)
            if count > 1:
-               errors += count - 1
-        return errors
-
+                return True
+        return False
 
 # Testar o analyser
 b = Analyzer([
