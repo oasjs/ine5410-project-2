@@ -1,7 +1,3 @@
-from board import Board
-
-# TODO: Implementar lógiica de percorrimento do tabuleiro
-
 
 class Analyzer:
     def __init__(self, board_set: list) -> None:

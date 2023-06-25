@@ -1,6 +1,5 @@
 import sys
 from process_controller import ProcessController
-from multiprocessing import Process
 
 
 def main() -> int:
