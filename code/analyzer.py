@@ -66,11 +66,9 @@ class Analyzer:
         return board_region_major
 
     # Analiza uma string e retorna o número de erros
+    # Trata qualquer caractere diferente de 1-9 como erro
     def __analyze(self, board: str) -> int:
-        errors = 0
-        # Verifica o número de caracteres repetidos
-        for c in board:
-           count = board.count(c)
-           if count > 1:
+        for i in range(9):
+            if board.count(str(i+1)) != 1:
                 return True
         return False
