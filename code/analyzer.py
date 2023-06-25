@@ -40,9 +40,9 @@ class Analyzer:
             e = self.__analyze(board_region_major[i])
             if e:
                 errors.append(f"R{i+1}")
-        
+
         return errors
-    
+
     def __parse_col(self, b):
         board_col_major = []
         column = ""
@@ -52,7 +52,7 @@ class Analyzer:
             board_col_major.append(column)
             column = ""
         return board_col_major
-    
+
     def __parse_region(self, b):
         board_region_major = []
         region = ""
@@ -64,18 +64,18 @@ class Analyzer:
                 board_region_major.append(region)
                 region = ""
         return board_region_major
-    
+
     # Analiza uma string e retorna o número de erros
-    def __analyze(self, board : str) -> int:
+    def __analyze(self, board: str) -> int:
         errors = 0
         # Verifica o número de caracteres repetidos
         for c in board:
-           count = board.count(c)
-           if count > 1:
-               errors += count - 1
+            count = board.count(c)
+            if count > 1:
+                errors += count - 1
         return errors
 
-
+""" 
 # Testar o analyser
 b = Analyzer([
     "534678912\n",
@@ -83,7 +83,7 @@ b = Analyzer([
     "198342567\n",
     "859761423\n",
     "426853791\n",
-    "713924856\n",
+    "713934856\n",
     "961537284\n",
     "287419635\n",
     "345286179\n"])
@@ -92,3 +92,4 @@ b = Analyzer([
 print(b.process_row())
 print(b.process_col())
 print(b.process_region())
+ """

@@ -1,23 +1,23 @@
 import sys
-from concurrent.futures import ProcessPoolExecutor
 from process_controller import ProcessController
-from input_parser import InputParser
+from multiprocessing import Process
 
 
 def main() -> int:
 
-    if (len(sys.argv)) < 3:
-        print("Você deve informar o número de processos e threads!")
+    if (len(sys.argv)) < 4:
+        print("Você deve informar o nome do arquivo de entrada e o número de processos e threads!")
         return 1
 
-    n_processes = int(sys.argv[1])
-    n_threads = int(sys.argv[2])
+    file = sys.argv[1]
+    n_processes = int(sys.argv[2])
+    n_threads = int(sys.argv[3])
 
     if (n_processes <= 0 or n_threads <= 0):
         print("Números de processos e threads devem ser maior do que 0!")
         return 1
 
-    with open('input-sample.txt', 'r') as f:
+    with open(file, 'r') as f:
         input = f.readlines()
 
     # Divide input em tabuleiros, pulando as quebras de linha do arquivo, e
@@ -34,19 +34,27 @@ def main() -> int:
     mod = n_boards % n_processes
     prev_end = 0
 
-    with ProcessPoolExecutor(max_workers=n_processes) as e:
-        for i in range(n_processes):
-            start = prev_end
-            end = prev_end + step + 1 if mod > 0 else prev_end + step
-            board_sets = input[start:end]
+    processes = []
+    for i in range(n_processes):
+        start = prev_end
+        end = prev_end + step + 1 if mod > 0 else prev_end + step
+        board_sets = input[start:end]
 
-            prev_end = end
-            if mod > 0:
-                mod -= 1
+        prev_end = end
+        if mod > 0:
+            mod -= 1
 
-            e.submit(ProcessController(n_threads, board_sets).start)
+        pc = ProcessController(n_threads, board_sets)
+        processes.append(pc)
+        pc.start()
+        if __name__ != '__main__':
+            return 0
+
+    for process in processes:
+        process.join()
 
     return 0
 
 
-main()
+if __name__ == '__main__':
+    main()
