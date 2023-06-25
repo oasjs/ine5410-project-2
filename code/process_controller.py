@@ -51,21 +51,21 @@ class ProcessController(Process):
 
     def __process_row(self, args: tuple[int, list[str]]) -> tuple[str, int]:
         board_set = args[0][1]
-        thread_name = 'T'+th.current_thread().name[-1]
+        thread_name = 'T' + str(int(th.current_thread().name[-1]) + 1)
         analyzer = Analyzer(board_set)
         errors = analyzer.process_row()
         return (f'{thread_name}: {", ".join(errors)}', len(errors))
 
     def __process_col(self, args: tuple[int, list[str]]) -> tuple[str, int]:
         board_set = args[0][1]
-        thread_name = 'T'+th.current_thread().name[-1]
+        thread_name = 'T' + str(int(th.current_thread().name[-1]) + 1)
         analyzer = Analyzer(board_set)
         errors = analyzer.process_col()
         return (f'{thread_name}: {", ".join(errors)}', len(errors))
 
     def __process_region(self, args: tuple[int, list[str]]) -> tuple[str, int]:
         board_set = args[0][1]
-        thread_name = 'T'+th.current_thread().name[-1]
+        thread_name = 'T' + str(int(th.current_thread().name[-1]) + 1)
         analyzer = Analyzer(board_set)
         errors = analyzer.process_region()
         return (f'{thread_name}: {", ".join(errors)}', len(errors))
