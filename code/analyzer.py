@@ -70,26 +70,7 @@ class Analyzer:
         errors = 0
         # Verifica o número de caracteres repetidos
         for c in board:
-            count = board.count(c)
-            if count > 1:
-                errors += count - 1
-        return errors
-
-""" 
-# Testar o analyser
-b = Analyzer([
-    "534678912\n",
-    "672195348\n",
-    "198342567\n",
-    "859761423\n",
-    "426853791\n",
-    "713934856\n",
-    "961537284\n",
-    "287419635\n",
-    "345286179\n"])
-
-# printa os erros
-print(b.process_row())
-print(b.process_col())
-print(b.process_region())
- """
+           count = board.count(c)
+           if count > 1:
+                return True
+        return False
