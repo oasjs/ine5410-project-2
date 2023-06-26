@@ -46,6 +46,8 @@ def main() -> int:
         pc = ProcessController(n_threads, board_sets)
         processes.append(pc)
         pc.start()
+        # Se não for a thread principal, não espera a execução terminar
+        # e finaliza
         if __name__ != '__main__':
             return 0
 
